@@ -15,10 +15,15 @@ void input(char** argv, int& startNum, int& endNum, std::vector<PIS>& factors) {
     int factorNum;
     input_file >> startNum >> endNum >> factorNum;
     for (int i = 0; i < factorNum; i++) {
-        int num;
-        std::string str;
-        input_file >> num >> str;
-        factors.push_back(PIS(num, str));
+        int divisor;
+        std::string name;
+        input_file >> divisor >> name;
+
+        if (divisor <= 0) {
+            std::cerr << "divisor should be greater than 0" << std::endl;
+            exit(0);
+        }
+        factors.push_back(PIS(divisor, name));
     }
     input_file.close();
 }
