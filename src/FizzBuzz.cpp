@@ -10,7 +10,7 @@ void input(char** argv, int& startNum, int& endNum, std::vector<PIS>& factors) {
     input_file.open(argv[1]);
     if (!input_file) {
         std::cerr << "failed to open input file" << std::endl;
-        exit(0);
+        exit(1);
     }
     int factorNum;
     input_file >> startNum >> endNum >> factorNum;
@@ -21,7 +21,7 @@ void input(char** argv, int& startNum, int& endNum, std::vector<PIS>& factors) {
 
         if (divisor <= 0) {
             std::cerr << "divisor should be greater than 0" << std::endl;
-            exit(0);
+            exit(1);
         }
         factors.push_back(PIS(divisor, name));
     }
@@ -45,16 +45,23 @@ std::vector<std::string> solve(int startNum, int endNum, std::vector<PIS>& facto
     return ret;
 }
 
-void output(std::vector<std::string>& results) {
-    for (std::string& result : results) {
-        std::cout << result << std::endl;
+void output(char** argv, std::vector<std::string>& results) {
+    std::ofstream output_file;
+    output_file.open(argv[2]);
+    if (!output_file) {
+        std::cerr << "failed to open output file" << std::endl;
+        exit(1);
     }
+    for (std::string& result : results) {
+        output_file << result << std::endl;
+    }
+    output_file.close();
 }
 
 int main(int argc, char** argv) {
-    if (argc != 2) {
-        std::cerr << "usage: ./FizzBuzz input.txt" << std::endl;
-        return 0;
+    if (argc != 3) {
+        std::cerr << "usage: ./FizzBuzz input.txt output.txt" << std::endl;
+        return 1;
     }
 
     int startNum, endNum;
@@ -64,7 +71,7 @@ int main(int argc, char** argv) {
 
     std::vector<std::string> results = solve(startNum, endNum, factors);
 
-    output(results);
+    output(argv, results);
     
     return 0;
 }

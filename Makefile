@@ -5,7 +5,7 @@ FizzBuzz: src/FizzBuzz.cpp
 	$(CC) $(CFLAGS) -o obj/FizzBuzz src/FizzBuzz.cpp
 
 test: FizzBuzz
-	./obj/FizzBuzz parameter/input.txt
+	./obj/FizzBuzz input/sample.txt output/sample.txt
 
 clean:
 	rm -f obj/*
