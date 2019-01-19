@@ -5,6 +5,7 @@
 
 typedef std::pair<int, std::string> PIS; // PIS(divisor, name)
 
+// read file inputs
 void input(char** argv, int& startNum, int& endNum, std::vector<PIS>& factors) {
     std::ifstream input_file;
     input_file.open(argv[1]);
@@ -24,6 +25,7 @@ void input(char** argv, int& startNum, int& endNum, std::vector<PIS>& factors) {
     input_file.close();
 }
 
+// check whether the input is valid or not
 void checker(int startNum, int endNum, std::vector<PIS>& factors) {
     if (startNum > endNum) {
         std::cerr << "starts should be less than or equal to ends" << std::endl;
@@ -37,6 +39,7 @@ void checker(int startNum, int endNum, std::vector<PIS>& factors) {
     }
 }
 
+// execute FizzBuzz algorithm
 std::vector<std::string> solve(int startNum, int endNum, std::vector<PIS>& factors) {
     std::vector<std::string> ret(endNum - startNum + 1, "");
     for (PIS& factor : factors) {
@@ -54,6 +57,7 @@ std::vector<std::string> solve(int startNum, int endNum, std::vector<PIS>& facto
     return ret;
 }
 
+// output results
 void output(char** argv, std::vector<std::string>& results) {
     std::ofstream output_file;
     output_file.open(argv[2]);
