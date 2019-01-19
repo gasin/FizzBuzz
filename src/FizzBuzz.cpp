@@ -29,21 +29,18 @@ void input(char** argv, int& startNum, int& endNum, std::vector<PIS>& factors) {
 }
 
 std::vector<std::string> solve(int startNum, int endNum, std::vector<PIS>& factors) {
-    std::vector<std::string> ret;
-    for (int i = startNum; i <= endNum; i++) {
-        std::string str = "";
-        bool isNum = true;
-        for (PIS& factor : factors) {
-            if (i % factor.first == 0) {
-                isNum = false;
-                str += factor.second;
-            }
+    std::vector<std::string> ret(endNum - startNum + 1, "");
+    for (PIS& factor : factors) {
+        int i = startNum;
+        if (startNum % factor.first) {
+            i += factor.first - (startNum % factor.first);
         }
-        if (isNum) {
-            ret.push_back(std::to_string(i));
-        } else {
-            ret.push_back(str);
+        for ( ; i <= endNum; i += factor.first) {
+            ret[i-startNum] += factor.second;
         }
+    }
+    for (int i = 0; i < (int)ret.size(); i++) {
+        if (ret[i] == "") ret[i] = std::to_string(i+startNum);
     }
     return ret;
 }
