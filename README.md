@@ -19,10 +19,19 @@ $ make test
 ```
 
 ### input file format
+
 ```
-startNum endNum factorNum
-num1 name1
-num2 name2
+s e m
+num_1 name_1
+num_2 name_2
 ...
+num_m name_m
 ```
 
+### output file format
+```
+name_of_{s}
+name_of_{s+1}
+...
+name_of_{e}
+```
