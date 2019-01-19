@@ -1,5 +1,6 @@
 FizzBuzz
 ====
+[![Build Status](https://travis-ci.com/gasin/FizzBuzz.svg?branch=master)](https://travis-ci.com/gasin/FizzBuzz)
 
 "good" FizzBuzz program
 
