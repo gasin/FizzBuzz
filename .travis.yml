@@ -2,4 +2,4 @@ language: cpp
 compiler: g++
 script:
   - g++ -v
-  - make test
+  - make test && cat output/sample.txt
