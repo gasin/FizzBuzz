@@ -9,7 +9,7 @@ void input(char** argv, int& startNum, int& endNum, std::vector<PIS>& factors) {
     std::ifstream input_file;
     input_file.open(argv[1]);
     if (!input_file) {
-        std::cerr << "failed to open input file" << std::endl;
+        std::cerr << "failed to open the input file" << std::endl;
         exit(1);
     }
     int factorNum;
@@ -26,12 +26,12 @@ void input(char** argv, int& startNum, int& endNum, std::vector<PIS>& factors) {
 
 void checker(int startNum, int endNum, std::vector<PIS>& factors) {
     if (startNum > endNum) {
-        std::cerr << "start number should be less than or equal to end number" << std::endl;
+        std::cerr << "starts should be less than or equal to ends" << std::endl;
         exit(1);
     }
     for (PIS& factor : factors) {
         if (factor.first <= 0) {
-            std::cerr << "divisor should be greater than 0" << std::endl;
+            std::cerr << "divisors should be greater than 0" << std::endl;
             exit(1);
         }
     }
@@ -58,7 +58,7 @@ void output(char** argv, std::vector<std::string>& results) {
     std::ofstream output_file;
     output_file.open(argv[2]);
     if (!output_file) {
-        std::cerr << "failed to open output file" << std::endl;
+        std::cerr << "failed to open the output file" << std::endl;
         exit(1);
     }
     for (std::string& result : results) {
