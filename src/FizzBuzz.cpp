@@ -19,13 +19,22 @@ void input(char** argv, int& startNum, int& endNum, std::vector<PIS>& factors) {
         std::string name;
         input_file >> divisor >> name;
 
-        if (divisor <= 0) {
-            std::cerr << "divisor should be greater than 0" << std::endl;
-            exit(1);
-        }
         factors.push_back(PIS(divisor, name));
     }
     input_file.close();
+}
+
+void checker(int startNum, int endNum, std::vector<PIS>& factors) {
+    if (startNum > endNum) {
+        std::cerr << "start number should be less than or equal to end number" << std::endl;
+        exit(1);
+    }
+    for (PIS& factor : factors) {
+        if (factor.first <= 0) {
+            std::cerr << "divisor should be greater than 0" << std::endl;
+            exit(1);
+        }
+    }
 }
 
 std::vector<std::string> solve(int startNum, int endNum, std::vector<PIS>& factors) {
@@ -68,6 +77,8 @@ int main(int argc, char** argv) {
     std::vector<PIS> factors;
 
     input(argv, startNum, endNum, factors);
+
+    checker(startNum, endNum, factors);
 
     std::vector<std::string> results = solve(startNum, endNum, factors);
 
