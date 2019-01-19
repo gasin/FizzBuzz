@@ -1,0 +1,5 @@
+language: cpp
+compiler: g++
+script:
+  - g++ -v
+  - make test
