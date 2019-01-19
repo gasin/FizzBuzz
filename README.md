@@ -13,9 +13,9 @@ Try to maintain scalability and maintainability and efficiency
 ```bash
 $ make
 ```
-### run
+### run test
 ```bash
-$ ./obj/FizzBuzz parameter/input.txt
+$ make test
 ```
 
 ### input file format
